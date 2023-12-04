@@ -4,7 +4,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input}/>
+        <TextInput style={styles.input} placeholder='Buscar productos'/>
         <Button title="Add"/>
       </View>
       <View style={styles.listContainer}>
