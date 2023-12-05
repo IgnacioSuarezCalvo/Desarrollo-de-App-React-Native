@@ -1,6 +1,7 @@
  import { useState } from 'react';
 import { StyleSheet, Text, View, StatusBar, TextInput, Button, FlatList, Modal, VirtualizedList } from 'react-native';
 import uuid from 'react-native-uuid';
+import ModalDelete from '../src/Components/ModalDelete';
 
 export default function App() {
 
@@ -54,18 +55,12 @@ export default function App() {
         />
         
       </View>
-      <Modal
-      visible={modalVisible}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalText}>¿Queres borrar este objeto?</Text>
-            <Text style={styles.modalText}>{productSelected.title}</Text>
-            <Button title='Confirmar' onPress={handleDeleteProduct}/>
-            <Button title='Cerrar' onPress={()=> setModalVisible(false)}/>
-          </View>
-        </View>
-      </Modal>
+      <ModalDelete
+      product = {productSelected}
+      visible = {modalVisible}
+      onModal = {handleModal}
+      onDelete = {handleDeleteProduct}
+      />  
     </View>
   );
 }
@@ -103,18 +98,4 @@ const styles = StyleSheet.create({
     alignItems:"center",
     borderWidth:4,
   },
-  modalContainer:{
-    flex:1,
-    alignItems:"center",
-    justifyContent:"center"
-  },
-  modalContent:{
-    width:"80%",
-    borderWidth:2,
-    padding:5,
-    gap:10
-  },
-  modalText:{
-    textAlign:"center"
-  }
 });

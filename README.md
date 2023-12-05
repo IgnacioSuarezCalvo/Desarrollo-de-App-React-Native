@@ -11,7 +11,15 @@ Aplicaciones en uso
   Expo Go
   Visual Studio Code
   Node js / NPM
+  react-native-uuid 
+
+  Aplicaciones y sus usos
+  
+  react-native-uuid
+    Instalacion: npm install react-native-uuid
+    Create import: uuid from 'react-native-uuid';
+    Llamado: uuid.v4(),
 
 Como levantar el proyecto (terminal de vsc)
   npx create-expo-app my-app (para levantar un proyecto en consola)
-  npx expo / npm start (para arrancar a escribir codigo y visualizarlo
+  npx expo / npm start (para arrancar a escribir codigo y visualizarlo)
