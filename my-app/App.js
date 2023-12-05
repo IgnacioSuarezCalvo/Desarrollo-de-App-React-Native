@@ -41,7 +41,7 @@ export default function App() {
   }
 
   const handleCompletedProduct = () =>{
-    const index = (products.findIndex(item => item === productSelected.id))
+    const index = products.findIndex(item => item === productSelected)
     products[index].completed = "Completado"
     setModalVisible(false)
   }
