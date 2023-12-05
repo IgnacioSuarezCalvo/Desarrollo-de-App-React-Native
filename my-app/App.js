@@ -1,11 +1,20 @@
- import { StyleSheet, Text, View, StatusBar, TextInput, Button } from 'react-native';
+ import { useState } from 'react';
+import { StyleSheet, Text, View, StatusBar, TextInput, Button } from 'react-native';
 
 export default function App() {
+
+  const [newTitleProduct,setNewTitleProduct] = useState("")
+  const [newPriceProduct,setNewPriceProduct] = useState(0)
+  
+  const handleAddProduct = () => {}
+
   return (
+
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder='Buscar productos'/>
-        <Button title="Add"/>
+        <TextInput style={styles.input} placeholder='Buscar productos' onChange={(t)=> setNewTitleProduct(t)}/>
+        <TextInput style={styles.input} placeholder='Buscar por precio' onChange={(t)=> setNewPriceProduct(t)}/>
+        <Button title="Add" onPress={handleAddProduct}/>
       </View>
       <View style={styles.listContainer}>
         <View style={styles.cardProduct}>
@@ -43,12 +52,13 @@ const styles = StyleSheet.create({
   },
   inputContainer:{
     flexDirection:"row",
+    alignItems:"center",
     alignSelf:"stretch",
     justifyContent:"space-around",
     marginTop:40,
   },
   input:{
-    width:250,
+    width:140,
     borderWidth:2,
     paddingHorizontal:10,
     paddingVertical:2,
