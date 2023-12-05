@@ -1,7 +1,8 @@
- import { useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, Text, View, StatusBar, TextInput, Button, FlatList, Modal, VirtualizedList } from 'react-native';
 import uuid from 'react-native-uuid';
 import ModalDelete from '../src/Components/ModalDelete';
+import AddProduct from '../src/Components/AddProduct';
 
 export default function App() {
 
@@ -38,11 +39,13 @@ export default function App() {
   return (
 
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="Producto" value={newTitleProduct} onChangeText={(t)=> setNewTitleProduct(t)}/>
-        <TextInput style={styles.input} placeholder="Precio" value={newPriceProduct} onChangeText={(t)=> setNewPriceProducts(t)}/>
-        <Button title="Add" onPress={handleAddProduct}/>
-      </View>
+      <AddProduct
+      valueTitle = {newTitleProduct}
+      valuePrice = {newPriceProduct}
+      onTitle = {setNewTitleProduct}
+      onPrice = {setNewPriceProducts}
+      addProduct = {handleAddProduct}
+      />
       <View style={styles.listContainer}>
         <FlatList
           data={products}
@@ -72,19 +75,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'start',
     marginTop:4,
-  },
-  inputContainer:{
-    flexDirection:"row",
-    alignItems:"center",
-    alignSelf:"stretch",
-    justifyContent:"space-around",
-    marginTop:40,
-  },
-  input:{
-    width:140,
-    borderWidth:2,
-    paddingHorizontal:10,
-    paddingVertical:2,
   },
   listContainer:{
     width:"100%",
