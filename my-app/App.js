@@ -1,11 +1,14 @@
  import { useState } from 'react';
-import { StyleSheet, Text, View, StatusBar, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, TextInput, Button, FlatList, Modal, VirtualizedList } from 'react-native';
 import uuid from 'react-native-uuid';
 
 export default function App() {
 
   const [newTitleProduct,setNewTitleProduct] = useState("")
   const [newPriceProduct,setNewPriceProducts] = useState("")
+  const [modalVisible,setModalVisible] = useState(false)
+  const [productSelected,setProductSelected] = useState({})
+
   const [products,setProducts] = useState([])
 
   const handleAddProduct = () => {
@@ -21,6 +24,16 @@ export default function App() {
     setNewPriceProducts("")
   }
 
+  const handleModal = (item) =>{
+    setProductSelected(item)
+    setModalVisible(true)
+  }
+
+  const handleDeleteProduct = () =>{
+    setProducts(current =>current.filter(product => product.id !== productSelected.id))
+    setModalVisible(false)
+  }
+
   return (
 
     <View style={styles.container}>
@@ -30,13 +43,29 @@ export default function App() {
         <Button title="Add" onPress={handleAddProduct}/>
       </View>
       <View style={styles.listContainer}>
-        {products.map(product =>  <View key={product.id} style={styles.cardProduct}>
-                                    <Text style={styles.cardTitle}>{product.title}</Text>
-                                    <Text>{product.price} $</Text>
-                                    <Button title='DEL'/>
-                                  </View>
-        )}
+        <FlatList
+          data={products}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => <View style={styles.cardProduct}>
+                                    <Text style={styles.cardTitle}>{item.title}</Text>
+                                    <Text>{item.price} $</Text>
+                                    <Button title='DEL' onPress={()=> handleModal(item)}/>
+                                  </View>}
+        />
+        
       </View>
+      <Modal
+      visible={modalVisible}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>¿Queres borrar este objeto?</Text>
+            <Text style={styles.modalText}>{productSelected.title}</Text>
+            <Button title='Confirmar' onPress={handleDeleteProduct}/>
+            <Button title='Cerrar' onPress={()=> setModalVisible(false)}/>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -74,4 +103,18 @@ const styles = StyleSheet.create({
     alignItems:"center",
     borderWidth:4,
   },
+  modalContainer:{
+    flex:1,
+    alignItems:"center",
+    justifyContent:"center"
+  },
+  modalContent:{
+    width:"80%",
+    borderWidth:2,
+    padding:5,
+    gap:10
+  },
+  modalText:{
+    textAlign:"center"
+  }
 });
