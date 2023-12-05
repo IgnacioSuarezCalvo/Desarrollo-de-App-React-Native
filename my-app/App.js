@@ -5,6 +5,7 @@ import uuid from 'react-native-uuid';
 
 import ModalItem from './src/Components/ModalItem';
 import AddItem from './src/Components/AddItem';
+import ListProduct from './src/Components/ListProduct';
 
 export default function App() {
 
@@ -49,17 +50,10 @@ export default function App() {
       addProduct = {handleAddProduct}
       />
 
-      <View style={styles.listContainer}>
-        <FlatList
-          data={products}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => <View style={styles.cardProduct}>
-                                    <Text style={styles.cardTitle}>{item.title}</Text>
-                                    <Text>{item.price} $</Text>
-                                    <Button title='DEL' onPress={()=> handleModal(item)}/>
-                                  </View>}
-        />
-      </View>
+      <ListProduct
+      products = {products}
+      onModal = {handleModal}
+      />
 
       <ModalItem
       product = {productSelected}
@@ -79,17 +73,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'start',
     marginTop:4,
-  },
-  listContainer:{
-    width:"100%",
-    marginTop:20,
-  },
-  cardProduct:{
-    flexDirection:"row",
-    padding:10,
-    margin:10,
-    justifyContent:"space-evenly",
-    alignItems:"center",
-    borderWidth:4,
   },
 });
