@@ -17,7 +17,10 @@ const styles = StyleSheet.create({
         margin:10,
         justifyContent:"space-evenly",
         alignItems:"center",
-        borderWidth:4,
+        borderWidth:2,
+        backgroundColor:"orange",
+        borderColor:"blue",
+        
       },
 })
 

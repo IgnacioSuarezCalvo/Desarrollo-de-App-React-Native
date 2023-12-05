@@ -16,13 +16,16 @@ const styles = StyleSheet.create({
         alignSelf:"stretch",
         justifyContent:"space-around",
         marginTop:40,
+        
       },
       input:{
         width:140,
         borderWidth:2,
         paddingHorizontal:10,
         paddingVertical:2,
+        borderColor:"blue",
       },
+      
 })
 
 export default AddItem

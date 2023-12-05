@@ -10,7 +10,7 @@ const ModalItem = ({product,visible,onModal,onDelete,onCompleted}) =>{
                         <Text style={styles.modalText}>¿Queres borrar este objeto?</Text>
                         <Text style={styles.modalText}>{product.title}</Text>
                         <Button title='Confirmar' onPress={onDelete}/>
-                        <Button title='Cerrar' onPress={()=>onModal(false)}/>
+                        <Button title='Cerrar' onPress={()=>onModal(false)} />
                         <Button title='Completado' onPress={onCompleted}/>
                     </View>
                 </View>
@@ -21,17 +21,18 @@ const styles  = StyleSheet.create({
     modalContainer:{
         flex:1,
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"center",
+        
       },
       modalContent:{
         width:"80%",
         borderWidth:2,
         padding:5,
-        gap:10
+        gap:10,
       },
       modalText:{
-        textAlign:"center"
-      }
-
+        textAlign:"center",
+        color:"black",
+      },
 })
 export default ModalItem
