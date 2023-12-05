@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, StatusBar, TextInput, Button, FlatList, Modal, VirtualizedList } from 'react-native';
 import uuid from 'react-native-uuid';
-import ModalDelete from '../src/Components/ModalDelete';
-import AddProduct from '../src/Components/AddProduct';
+
+
+import ModalItem from './src/Components/ModalItem';
+import AddItem from './src/Components/AddItem';
 
 export default function App() {
 
@@ -39,13 +41,14 @@ export default function App() {
   return (
 
     <View style={styles.container}>
-      <AddProduct
+      <AddItem
       valueTitle = {newTitleProduct}
       valuePrice = {newPriceProduct}
-      onTitle = {setNewTitleProduct}
-      onPrice = {setNewPriceProducts}
+      onChangeTitle = {setNewTitleProduct}
+      onChangePrice = {setNewPriceProducts}
       addProduct = {handleAddProduct}
       />
+
       <View style={styles.listContainer}>
         <FlatList
           data={products}
@@ -56,14 +59,15 @@ export default function App() {
                                     <Button title='DEL' onPress={()=> handleModal(item)}/>
                                   </View>}
         />
-        
       </View>
-      <ModalDelete
+
+      <ModalItem
       product = {productSelected}
       visible = {modalVisible}
       onModal = {handleModal}
       onDelete = {handleDeleteProduct}
       />  
+      
     </View>
   );
 }
