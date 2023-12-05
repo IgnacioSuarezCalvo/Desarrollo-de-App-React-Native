@@ -21,7 +21,8 @@ export default function App() {
     const newProduct ={
       id:uuid.v4(),
       title:newTitleProduct,
-      price:newPriceProduct
+      price:newPriceProduct,
+      completed:"Falta Completar"
     }
 
     setProducts(current => [...current,newProduct])
@@ -36,6 +37,12 @@ export default function App() {
 
   const handleDeleteProduct = () =>{
     setProducts(current =>current.filter(product => product.id !== productSelected.id))
+    setModalVisible(false)
+  }
+
+  const handleCompletedProduct = () =>{
+    const index = (products.findIndex(item => item === productSelected.id))
+    products[index].completed = "Completado"
     setModalVisible(false)
   }
 
@@ -60,6 +67,7 @@ export default function App() {
       visible = {modalVisible}
       onModal = {handleModal}
       onDelete = {handleDeleteProduct}
+      onCompleted = {handleCompletedProduct}
       />  
       
     </View>

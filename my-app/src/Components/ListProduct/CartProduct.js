@@ -1,10 +1,11 @@
 import {View, Text, Button, StyleSheet} from 'react-native'
 
-const CardProduct = (item,onModal) =>{
+const CardProduct = ({item,onModal}) =>{
 
     return  <View style={styles.cardProduct}>
                 <Text style={styles.cardTitle}>{item.title}</Text>
                 <Text>{item.price} $</Text>
+                <Text>{item.completed} </Text>
                 <Button title='DEL' onPress={()=> onModal(item)}/>
             </View>
 }

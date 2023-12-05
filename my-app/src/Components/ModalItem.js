@@ -1,6 +1,6 @@
 import {Modal, View, Text, Button, StyleSheet} from "react-native"
 
-const ModalItem = ({product,visible,onModal,onDelete}) =>{
+const ModalItem = ({product,visible,onModal,onDelete,onCompleted}) =>{
 
     return  <Modal
               visible={visible}
@@ -11,6 +11,7 @@ const ModalItem = ({product,visible,onModal,onDelete}) =>{
                         <Text style={styles.modalText}>{product.title}</Text>
                         <Button title='Confirmar' onPress={onDelete}/>
                         <Button title='Cerrar' onPress={()=>onModal(false)}/>
+                        <Button title='Completado' onPress={onCompleted}/>
                     </View>
                 </View>
             </Modal>
