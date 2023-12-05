@@ -1,42 +1,41 @@
  import { useState } from 'react';
 import { StyleSheet, Text, View, StatusBar, TextInput, Button } from 'react-native';
+import uuid from 'react-native-uuid';
 
 export default function App() {
 
   const [newTitleProduct,setNewTitleProduct] = useState("")
-  const [newPriceProduct,setNewPriceProduct] = useState(0)
-  
-  const handleAddProduct = () => {}
+  const [newPriceProduct,setNewPriceProducts] = useState("")
+  const [products,setProducts] = useState([])
+
+  const handleAddProduct = () => {
+
+    const newProduct ={
+      id:uuid.v4(),
+      title:newTitleProduct,
+      price:newPriceProduct
+    }
+
+    setProducts(current => [...current,newProduct])
+    setNewTitleProduct("")
+    setNewPriceProducts("")
+  }
 
   return (
 
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder='Buscar productos' onChange={(t)=> setNewTitleProduct(t)}/>
-        <TextInput style={styles.input} placeholder='Buscar por precio' onChange={(t)=> setNewPriceProduct(t)}/>
+        <TextInput style={styles.input} placeholder="Producto" value={newTitleProduct} onChangeText={(t)=> setNewTitleProduct(t)}/>
+        <TextInput style={styles.input} placeholder="Precio" value={newPriceProduct} onChangeText={(t)=> setNewPriceProducts(t)}/>
         <Button title="Add" onPress={handleAddProduct}/>
       </View>
       <View style={styles.listContainer}>
-        <View style={styles.cardProduct}>
-          <Text>Fernet</Text>
-          <Text>2500$</Text>
-          <Button title='DEL'/>
-        </View>
-        <View style={styles.cardProduct}>
-          <Text>Coca Cola</Text>
-          <Text>2500$</Text>
-          <Button title='DEL'/>
-        </View>
-        <View style={styles.cardProduct}>
-          <Text>Gancia</Text>
-          <Text>2500$</Text>
-          <Button title='DEL'/>
-        </View>
-        <View style={styles.cardProduct}>
-          <Text>Sprite</Text>
-          <Text>2500$</Text>
-          <Button title='DEL'/>
-        </View>
+        {products.map(product =>  <View key={product.id} style={styles.cardProduct}>
+                                    <Text style={styles.cardTitle}>{product.title}</Text>
+                                    <Text>{product.price} $</Text>
+                                    <Button title='DEL'/>
+                                  </View>
+        )}
       </View>
     </View>
   );
