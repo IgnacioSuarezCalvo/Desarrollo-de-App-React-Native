@@ -6,6 +6,7 @@ import uuid from 'react-native-uuid';
 import ModalItem from './src/Components/ModalItem';
 import AddItem from './src/Components/AddItem';
 import ListProduct from './src/Components/ListProduct';
+import { Header } from 'react-native/Libraries/NewAppScreen';
 
 export default function App() {
 
@@ -49,6 +50,9 @@ export default function App() {
   return (
 
     <View style={styles.container}>
+
+      <Header title='titulo'/>
+
       <AddItem
       valueTitle = {newTitleProduct}
       valuePrice = {newPriceProduct}
