@@ -7,6 +7,7 @@ import ModalItem from './src/Components/ModalItem';
 import AddItem from './src/Components/AddItem';
 import ListProduct from './src/Components/ListProduct';
 import  Header  from './src/Components/Header';
+import Categories from './src/Components/Categories';
 
 export default function App() {
 
@@ -50,8 +51,9 @@ export default function App() {
   return (
 
     <View style={styles.container}>
-
+      
       <Header title='Categorias'/>
+      {/* <Categories/> */}
 
       <AddItem
       valueTitle = {newTitleProduct}
