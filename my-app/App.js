@@ -6,7 +6,7 @@ import uuid from 'react-native-uuid';
 import ModalItem from './src/Components/ModalItem';
 import AddItem from './src/Components/AddItem';
 import ListProduct from './src/Components/ListProduct';
-import { Header } from 'react-native/Libraries/NewAppScreen';
+import  Header  from './src/Components/Header';
 
 export default function App() {
 
@@ -51,7 +51,7 @@ export default function App() {
 
     <View style={styles.container}>
 
-      <Header title='titulo'/>
+      <Header title='Categorias'/>
 
       <AddItem
       valueTitle = {newTitleProduct}
@@ -84,6 +84,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'start',
-    marginTop:4,
   },
 });

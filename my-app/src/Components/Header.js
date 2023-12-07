@@ -17,14 +17,15 @@ export default Header
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:colors.blue1,
+        backgroundColor:colors.yellow1,
         width:'100%',
         height:80,
         justifyContent:'center',
         alignItems:'center'
     },
     text:{
-        fontSize:20
+        fontSize:20,
+        marginTop:20,
     }
 
 })

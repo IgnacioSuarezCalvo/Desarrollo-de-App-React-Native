@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { Header } from 'react-native/Libraries/NewAppScreen'
+import { StyleSheet, View } from 'react-native'
+import  Header  from '../Components/Header'
+import Categories from '../Components/Categories'
 
 
 const Home = () => {
   return (
     <View>
-      <Header title='Categories'/>
+      <Header title='Categorias'/>
       <Categories/>
     </View>
   )
