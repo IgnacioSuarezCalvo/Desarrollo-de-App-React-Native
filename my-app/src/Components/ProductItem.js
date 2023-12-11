@@ -5,6 +5,12 @@ import { colors } from '../Global/colors'
 const ProductItem = ({item}) => {
   return (
     <View style={styles.container}>
+      <Image
+        style={styles.image}
+        resizeMode='cover'
+        source={{uri:item.thumbnail}}
+      
+      />
       <Text style={styles.text}>{item.title}</Text>
     </View>
   )
@@ -21,6 +27,14 @@ const styles = StyleSheet.create({
         marginVertical:10,
         paddingHorizontal:10,
         paddingVertical:15,
-        borderRadius:5
+        borderRadius:5,
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'start',
+        gap:25,
+    },
+    image:{
+      width:50,
+      height:50,
     }
 })

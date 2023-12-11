@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, TextInput, View } from 'react-native'
+import { Pressable, StyleSheet, TextInput, View, Text } from 'react-native'
 import { colors } from '../Global/colors'
 import { AntDesign, Entypo } from '@expo/vector-icons'
 import { useState } from 'react'
@@ -7,16 +7,29 @@ import { useState } from 'react'
 const Search = ({keyword, setKeyword}) => {
 
     const [input,setInput] = useState("")
+    const [error,setError] = useState("")
 
+    const search = () =>{
+      const expression = /.*[0-9].*/
+      if(expression.test(input)){
+        setError('No debe contener numeros')
+      }else{
+        setKeyword(input)
+        }
+      }
+      
   return (
-    <View style={styles.ListCategoriesContainer}>
-    <TextInput placeholder='Buscar producto' style={styles.textImput} value={input} onChangeText={(t)=>setInput(t)}/>
-    <Pressable onPress={()=>{setKeyword(input)}}>
-      <AntDesign name='search1' color='black' size={25} />
-    </Pressable>
-    <Pressable onPress={()=>{setKeyword('')}}>
-      <Entypo name='circle-with-cross' color='black' size={25} />
-    </Pressable>
+    <View style={styles.container}>
+      <View style={styles.containerInput}>
+        <TextInput placeholder='Buscar producto' style={styles.textImput} value={input} onChangeText={(t)=>setInput(t)}/>
+        <Pressable onPress={search}>
+          <AntDesign name='search1' color='black' size={25} />
+        </Pressable>
+        <Pressable onPress={()=>{setKeyword('')}}>
+          <Entypo name='circle-with-cross' color='black' size={25} />
+        </Pressable>
+      </View>
+      {error ? <Text>{error}</Text> : null}
   </View>
   )
 }
@@ -24,7 +37,8 @@ const Search = ({keyword, setKeyword}) => {
 export default Search
 
 const styles = StyleSheet.create({
-    ListCategoriesContainer:{
+    container:{},
+    containerInput:{
         width:"100%",
         backgroundColor:colors.yellow1,
         flexDirection:'row',
