@@ -29,7 +29,7 @@ const Search = ({keyword, setKeyword}) => {
           <Entypo name='circle-with-cross' color='black' size={25} />
         </Pressable>
       </View>
-      {error ? <Text>{error}</Text> : null}
+      {error ? <Text style={styles.errorInput}>{error}</Text> : null}
   </View>
   )
 }
@@ -37,10 +37,12 @@ const Search = ({keyword, setKeyword}) => {
 export default Search
 
 const styles = StyleSheet.create({
-    container:{},
+    container:{
+      backgroundColor:colors.yellow1,
+      width:'100%',
+    },
     containerInput:{
         width:"100%",
-        backgroundColor:colors.yellow1,
         flexDirection:'row',
         alignItems:'center',
         gap:10,
@@ -53,6 +55,9 @@ const styles = StyleSheet.create({
       paddingHorizontal:10,
       paddingVertical:5,
       margin:10,
-
-    }
+    },
+    errorInput:{
+      color:'red',
+      paddingHorizontal:10,
+    },
 })
