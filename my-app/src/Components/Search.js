@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         width:"100%",
         flexDirection:'row',
         alignItems:'center',
-        gap:10,
+        gap:15,
     },
     textImput:{
       width:'65%',
