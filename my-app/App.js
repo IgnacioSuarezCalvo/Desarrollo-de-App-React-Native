@@ -73,6 +73,7 @@ export default function App() {
       visible = {modalVisible}
       onModal = {handleModal}
       onDelete = {handleDeleteProduct}
+      setModalVisible = {setModalVisible}
       onCompleted = {handleCompletedProduct}
       />  
       

@@ -6,7 +6,7 @@ const CardProduct = ({item,onModal}) =>{
                 <Text style={styles.cardTitle}>{item.title}</Text>
                 <Text>{item.price} $</Text>
                 <Text>{item.completed} </Text>
-                <Button title='DEL' onPress={()=> onModal(item)}/>
+                <Button title='...' onPress={()=> onModal(item)}/>
             </View>
 }
 
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         borderColor:"blue",
         
       },
+
 })
 
 export default CardProduct
