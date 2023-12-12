@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, } from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import { useFonts } from 'expo-font';
 import uuid from 'react-native-uuid';
 
@@ -63,18 +63,15 @@ export default function App() {
   return (
 
     <View style={styles.container}>
-      
+
       {categorySelected ? 
       <ItemListCategories category={categorySelected}/>
       :
       <Home setCategorySelected={setCategorySelected}/> 
+
       }
-      
 
-      {/* <Header title='Categorias'/>
-      <Categories/> 
-
-      <AddItem
+      {/* <AddItem
       valueTitle = {newTitleProduct}
       valuePrice = {newPriceProduct}
       onChangeTitle = {setNewTitleProduct}
@@ -94,7 +91,9 @@ export default function App() {
       onDelete = {handleDeleteProduct}
       setModalVisible = {setModalVisible}
       onCompleted = {handleCompletedProduct}
-      />  */}
+      /> */}
+    
+   
       
     </View>
   );
