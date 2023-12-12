@@ -13,6 +13,7 @@ Aplicaciones en uso
   Node js / NPM
   react-native-uuid 
   react native vector icons
+  Fonts
 
   Aplicaciones y sus usos
   
@@ -25,6 +26,10 @@ Aplicaciones en uso
     Instalacion: npm i react-native-vector-icons
     Create import: import { AntDesign, Entypo } from '@expo/vector-icons'
     Llamado: Entypo (sector del icono) name='circle-with-cross (nombre del icono)' 
+
+  Fonts
+    Instalacion: npx expo install expo-font
+    Se llama en app.js y donde se lo usamos (crear constante como colors.)
 
 Como levantar el proyecto (terminal de vsc)
   npx create-expo-app my-app (para levantar un proyecto en consola)
