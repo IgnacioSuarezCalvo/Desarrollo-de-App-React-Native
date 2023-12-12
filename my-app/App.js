@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, StatusBar, TextInput, Button, FlatList, Modal, VirtualizedList } from 'react-native';
+import { StyleSheet, View, } from 'react-native';
+import { useFonts } from 'expo-font';
 import uuid from 'react-native-uuid';
 
 
@@ -8,6 +9,8 @@ import AddItem from './src/Components/AddItem';
 import ListProduct from './src/Components/ListProduct';
 import  Header  from './src/Components/Header';
 import Categories from './src/Components/Categories';
+import Home from './src/Screens/Home';
+import ItemListCategories from './src/Screens/ItemListCategories';
 
 export default function App() {
 
@@ -15,7 +18,7 @@ export default function App() {
   const [newPriceProduct,setNewPriceProducts] = useState("")
   const [modalVisible,setModalVisible] = useState(false)
   const [productSelected,setProductSelected] = useState({})
-
+  const [categorySelected,setCategorySelected] = useState("")
   const [products,setProducts] = useState([])
 
   const handleAddProduct = () => {
@@ -48,12 +51,28 @@ export default function App() {
     setModalVisible(false)
   }
 
+  const [fontLoaded] = useFonts({
+    Josefin:require("./assets/Fonts/JosefinSans-Italic-VariableFont_wght.ttf"),
+    Lato:require("./assets/Fonts/Lato-Regular.ttf")
+  })
+
+  if(!fontLoaded) return null
+
+  
+
   return (
 
     <View style={styles.container}>
       
-      <Header title='Categorias'/>
-      {/* <Categories/> */}
+      {categorySelected ? 
+      <ItemListCategories category={categorySelected}/>
+      :
+      <Home setCategorySelected={setCategorySelected}/> 
+      }
+      
+
+      {/* <Header title='Categorias'/>
+      <Categories/> 
 
       <AddItem
       valueTitle = {newTitleProduct}
@@ -75,7 +94,7 @@ export default function App() {
       onDelete = {handleDeleteProduct}
       setModalVisible = {setModalVisible}
       onCompleted = {handleCompletedProduct}
-      />  
+      />  */}
       
     </View>
   );
@@ -83,9 +102,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    width:'100%',
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'start',
   },
 });

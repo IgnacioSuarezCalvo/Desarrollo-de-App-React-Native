@@ -7,7 +7,7 @@ const Header = ({title = 'Productos'}) => {
 
         <View style ={styles.container}>
 
-        <Text style ={styles.text}>{title}</Text>
+            <Text style ={styles.text}>{title}</Text>
 
         </View>
     )
@@ -19,13 +19,15 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor:colors.yellow1,
         width:'100%',
-        height:80,
+        height:90,
         justifyContent:'center',
         alignItems:'center'
     },
     text:{
         fontSize:20,
-        marginTop:20,
+        fontFamily:'Lato',
+        marginTop:25,
+        
     }
 
 })

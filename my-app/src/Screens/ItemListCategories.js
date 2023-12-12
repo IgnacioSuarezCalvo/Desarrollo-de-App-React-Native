@@ -8,14 +8,25 @@ import { useEffect, useState } from 'react'
 
 
 
-const ItemListCategories = () => {
+const ItemListCategories = ({category}) => {
 
   const [keyword,setKeyword] = useState("")
   const [products,setProducts] = useState(allProducts)
 
   useEffect(()=>{
-    const productsFiltered = allProducts.filter(product => product.title.includes(keyword))
-    setProducts(productsFiltered)
+
+    if(category){
+      const productsCategory = allProducts.filter(product => product.category === category)
+      const productsFiltered = productsCategory.filter(product => product.title.includes(keyword))
+      setProducts(productsFiltered)
+    }else{
+      const productsFiltered = allProducts.filter(product => product.title.includes(keyword))
+      setProducts(productsFiltered)
+    }
+
+
+
+    
 
   },[keyword])
 
@@ -37,7 +48,8 @@ export default ItemListCategories
 
 const styles = StyleSheet.create({
   container:{
-    width:'100%'
+    width:'100%',
+
   }
 
 })

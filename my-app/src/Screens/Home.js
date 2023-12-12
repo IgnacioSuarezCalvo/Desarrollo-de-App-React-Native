@@ -3,11 +3,11 @@ import  Header  from '../Components/Header'
 import Categories from '../Components/Categories'
 
 
-const Home = () => {
+const Home = ({setCategorySelected}) => {
   return (
     <View>
-      <Header title='Categorias'/>
-      <Categories/>
+      <Header title='Categorias' />
+      <Categories setCategorySelected={setCategorySelected}/>
     </View>
   )
 }

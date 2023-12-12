@@ -17,16 +17,22 @@ const Search = ({keyword, setKeyword}) => {
         setKeyword(input)
         }
       }
+      const removeItem = () =>{
+        setInput('')
+        setError('')
+
+      }
+
       
   return (
     <View style={styles.container}>
       <View style={styles.containerInput}>
         <TextInput placeholder='Buscar producto' style={styles.textImput} value={input} onChangeText={(t)=>setInput(t)}/>
         <Pressable onPress={search}>
-          <AntDesign name='search1' color='black' size={25} />
+          <AntDesign name='search1' color='black' size={30} />
         </Pressable>
-        <Pressable onPress={()=>{setKeyword('')}}>
-          <Entypo name='circle-with-cross' color='black' size={25} />
+        <Pressable onPress={removeItem}>
+          <Entypo name='circle-with-cross' color='black' size={30} />
         </Pressable>
       </View>
       {error ? <Text style={styles.errorInput}>{error}</Text> : null}
@@ -45,11 +51,11 @@ const styles = StyleSheet.create({
         width:"100%",
         flexDirection:'row',
         alignItems:'center',
-        gap:15,
+        gap:10,
     },
     textImput:{
       width:'65%',
-      backgroundColor:colors.blue1,
+      backgroundColor:colors.white1,
       borderWidth:2,
       borderRadius:5,
       paddingHorizontal:10,

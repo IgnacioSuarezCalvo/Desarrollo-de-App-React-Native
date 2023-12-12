@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text } from 'react-native'
 import { colors } from '../Global/colors'
 
 
-const CategoriesItem = ({category}) => {
+const CategoriesItem = ({category, setCategorySelected}) => {
   return (
-    <View style={styles.CategoriesItemContainer}>
+    <Pressable style={styles.CategoriesItemContainer} onPress={()=>setCategorySelected(category)} >
       <Text style={styles.CategoriesItemText}>{category}</Text>
-    </View>
+    </Pressable>
   )
 }
 
@@ -14,16 +14,16 @@ export default CategoriesItem
 
 const styles = StyleSheet.create({
   CategoriesItemContainer:{
-    width:"80%",
-    marginHorizontal:"10%",
+    width:"96%",
     backgroundColor:colors.blue1,
-    margin:10,
-    padding:10,
-    justifyContent:"center",
+    margin:8,
+    padding:8,
     alignItems:"center",
+    justifyContent:"center",
     elevation:10,
+    
   },
   CategoriesItemText:{
-
+    padding:2,
   }
 })
