@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable, useWindowDimensions } from 'react-native'
 import { useEffect, useState } from 'react'
 import  Header  from '../Components/Header'
 import allProduct from '../Data/products.json'
@@ -14,26 +14,39 @@ const ItemDetail = ({productDetailId, setProductDetailId}) => {
     setProduct(productFinded)
   },[productDetailId])
 
+  const{width,height}  = useWindowDimensions()
+  const[lanscape,setLanscape] = useState(false)
+
+  useEffect(()=>{
+      if(width>height){
+          setLanscape(true)
+      } else{
+          setLanscape(false)
+      }
+  },[width,height])
+
   return (
     <View style={styles.ItemDetailContainer}>
       <Header title="Detail"/>
       <Pressable style={styles.goBack} title='go back' onPress={()=>setProductDetailId(0)}> 
         <Text>Volver</Text>
     </Pressable>
-      <Image
-      style={styles.image}
-      source={{uri:product.thumbnail}}
-      resizeMode='cover'
-      />
-      <View style={styles.containerText}>
-        <Text style={styles.title}>{product.title}</Text>
-        <Text style={styles.description}>{product.description}</Text>
-      </View>
-      <View style={styles.containerPrice}>
-        <Text style={styles.price}>$ {product.price}</Text>
-        <Pressable style={styles.buyNow}>
-          <Text style={styles.buyNowText}>Buy Now</Text>
-        </Pressable>
+    <View styles={lanscape ? styles.ContentLandscape : styles.Content }>
+        <Image
+        style={lanscape ? styles.ContentImageLandscape : styles.image}
+        source={{uri:product.thumbnail}}
+        resizeMode='cover'
+        />
+        <View style={ lanscape ? styles.ContentTextLandscape :  styles.containerText}>
+          <Text style={styles.title}>{product.title}</Text>
+          <Text style={styles.description}>{product.description}</Text>
+        </View>
+        <View style={lanscape ? styles.ContentPriceLandscape : styles.containerPrice}>
+          <Text style={styles.price}>$ {product.price}</Text>
+          <Pressable style={styles.buyNow}>
+            <Text style={styles.buyNowText}>Buy Now</Text>
+          </Pressable>
+        </View>
       </View>
       
     </View>
@@ -49,8 +62,24 @@ const styles = StyleSheet.create({
         justifyContent:"start",
         alignItems:"center"
     },
+    Content:{
+      width:"100%",
+      flex:1,
+      justifyContent:"start",
+      alignItems:"center"
+    },
+    ContentLandscape:{
+      flexDirection:'row',
+      alignItems:'center',
+      gap:10,
+      marginVertical:15,
+    },
     image:{
       width:'100%',
+      height:300,
+    },
+    ContentImageLandscape:{
+      width:'30%',
       height:300,
     },
     goBack:{
@@ -65,6 +94,10 @@ const styles = StyleSheet.create({
       paddingVertical:15,
 
     },
+    ContentTextLandscape:{
+      width:'30%',
+      flexDirection:'column'
+    },
     containerPrice:{
       width:'100%',
       flexDirection:'row',
@@ -72,6 +105,10 @@ const styles = StyleSheet.create({
       alignItems:'center',
       marginVertical:10,
 
+    },
+    ContentPriceLandscape:{
+      width:'30%',
+      flexDirection:'column'
     },
     title:{
       fontSize:20,
