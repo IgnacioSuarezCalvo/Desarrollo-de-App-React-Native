@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { StyleSheet, View} from 'react-native';
+import { useEffect, useState } from 'react';
+import { StyleSheet, View, SafeAreaView, StatusBar} from 'react-native';
 import { useFonts } from 'expo-font';
 import uuid from 'react-native-uuid';
 
@@ -11,6 +11,8 @@ import  Header  from './src/Components/Header';
 import Categories from './src/Components/Categories';
 import Home from './src/Screens/Home';
 import ItemListCategories from './src/Screens/ItemListCategories';
+import ItemDetail from './src/Screens/ItemDetail';
+import { colors } from './src/Global/colors';
 
 export default function App() {
 
@@ -18,6 +20,7 @@ export default function App() {
   const [newPriceProduct,setNewPriceProducts] = useState("")
   const [modalVisible,setModalVisible] = useState(false)
   const [productSelected,setProductSelected] = useState({})
+  const [productDetailId,setProductDetailId] = useState(0)
   const [categorySelected,setCategorySelected] = useState("")
   const [products,setProducts] = useState([])
 
@@ -56,46 +59,62 @@ export default function App() {
     Lato:require("./assets/Fonts/Lato-Regular.ttf")
   })
 
+ 
+
   if(!fontLoaded) return null
 
   
 
   return (
-
-    <View style={styles.container}>
-
-      {categorySelected ? 
-      <ItemListCategories category={categorySelected}/>
-      :
-      <Home setCategorySelected={setCategorySelected}/> 
-
-      }
-
-      {/* <AddItem
-      valueTitle = {newTitleProduct}
-      valuePrice = {newPriceProduct}
-      onChangeTitle = {setNewTitleProduct}
-      onChangePrice = {setNewPriceProducts}
-      addProduct = {handleAddProduct}
+    <>
+      <StatusBar
+      backgroundColor={colors.yellow1}
+      barStyle='default'
       />
+      <SafeAreaView style={styles.container}>
 
-      <ListProduct
-      products = {products}
-      onModal = {handleModal}
-      />
+        {categorySelected ? 
+          productDetailId !=0 ?
+              <ItemDetail productDetailId={productDetailId} setProductDetailId={setProductDetailId}/>
+            
+            :
+              <ItemListCategories 
+              category={categorySelected} 
+              setCategorySelected={setCategorySelected}
+              setProductDetailId={setProductDetailId}
+              />
+              
+        :
+        <Home setCategorySelected={setCategorySelected}/> 
 
-      <ModalItem
-      product = {productSelected}
-      visible = {modalVisible}
-      onModal = {handleModal}
-      onDelete = {handleDeleteProduct}
-      setModalVisible = {setModalVisible}
-      onCompleted = {handleCompletedProduct}
-      /> */}
-    
-   
+        }
+
+        {/* <AddItem
+        valueTitle = {newTitleProduct}
+        valuePrice = {newPriceProduct}
+        onChangeTitle = {setNewTitleProduct}
+        onChangePrice = {setNewPriceProducts}
+        addProduct = {handleAddProduct}
+        />
+
+        <ListProduct
+        products = {products}
+        onModal = {handleModal}
+        />
+
+        <ModalItem
+        product = {productSelected}
+        visible = {modalVisible}
+        onModal = {handleModal}
+        onDelete = {handleDeleteProduct}
+        setModalVisible = {setModalVisible}
+        onCompleted = {handleCompletedProduct}
+        /> */}
       
-    </View>
+    
+        
+      </SafeAreaView>
+    </>
   );
 }
 

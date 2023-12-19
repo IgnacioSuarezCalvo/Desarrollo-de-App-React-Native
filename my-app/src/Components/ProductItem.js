@@ -1,10 +1,15 @@
-import { StyleSheet, Text, View, Image} from 'react-native'
+import { StyleSheet, Text, View, Image, useWindowDimensions, Pressable } from 'react-native'
 import { colors } from '../Global/colors'
+import { useEffect } from 'react'
 
 
-const ProductItem = ({item}) => {
+const ProductItem = ({item,setProductDetailId}) => {
+  const {width} = useWindowDimensions()
+
+
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={()=>setProductDetailId(item.id)}>
+      <Text style={width>350 ? styles.text : styles.textMin } >{item.title} </Text>
       <Image
         style={styles.image}
         resizeMode='cover'
@@ -12,7 +17,7 @@ const ProductItem = ({item}) => {
       
       />
       <Text style={styles.text}>{item.title}</Text>
-    </View>
+    </Pressable>
   )
 }
 
@@ -30,11 +35,22 @@ const styles = StyleSheet.create({
         borderRadius:5,
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'start',
+        justifyContent:'space-between',
         gap:25,
     },
+    text:{
+      width:'60%',
+      textAlign:'center',
+      fontSize:20,
+    },
+    textMin:{
+      width:'60%',
+      textAlign:'center',
+      fontSize:10,
+    },
     image:{
-      width:50,
-      height:50,
+      minWidth:80,
+      minHeight:80,
+      width:'30%'
     }
 })

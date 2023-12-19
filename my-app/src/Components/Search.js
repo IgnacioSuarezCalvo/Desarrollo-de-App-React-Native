@@ -35,7 +35,8 @@ const Search = ({keyword, setKeyword}) => {
 
       <View style={styles.containerInput}>
         <Pressable>
-          <AntDesign name="arrowleft" size={24} color="black" />
+          <AntDesign name="arrowleft" size={24} color="black"  />
+      
         </Pressable>
           <TextInput placeholder='Buscar producto'value={input} style={styles.textInputContainer} onChangeText={(t)=>setInput(t)}/>
           <Pressable onPress={search}>
