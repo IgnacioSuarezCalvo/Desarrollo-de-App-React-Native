@@ -14,6 +14,7 @@ Aplicaciones en uso
   react-native-uuid 
   react native vector icons
   Fonts
+  React Navitagion
 
   Aplicaciones y sus usos
   
@@ -30,6 +31,15 @@ Aplicaciones en uso
   Fonts
     Instalacion: npx expo install expo-font
     Se llama en app.js y donde se lo usamos (crear constante como colors.)
+
+  React Navitagion
+    Instalacion: npm install @react-navigation/native  
+                / Despues --> npx expo install react-native-screens react-native-safe-area-context 
+                / Despues --> npm install react-native-screens react-native-safe-area-context
+                / Despues --> npm install @react-navigation/native-stack
+    Create import: import { NavigationContainer } from '@react-navigation/native'; import { createNativeStackNavigator } from '@react-navigation/native-stack';
+    Agregar: const Stack = createNativeStackNavigator();
+    Llamados: <!-- <NavigationContainer>{/* Rest of your app code */}</NavigationContainer>  <Stack.Screen name="Details" component={DetailsScreen} / --> 
 
 Como levantar el proyecto (terminal de vsc)
   npx create-expo-app my-app (para levantar un proyecto en consola)
