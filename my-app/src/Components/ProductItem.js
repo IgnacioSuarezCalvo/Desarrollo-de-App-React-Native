@@ -1,14 +1,12 @@
 import { StyleSheet, Text,Image, useWindowDimensions, Pressable } from 'react-native'
 import { colors } from '../Global/colors'
 
-
-
-const ProductItem = ({item,setProductDetailId}) => {
+const ProductItem = ({item,navigation,route}) => {
   const {width} = useWindowDimensions()
 
 
   return (
-    <Pressable style={styles.container} onPress={()=>setProductDetailId(item.id)}>
+    <Pressable style={styles.container} onPress={()=> navigation.navigate('Product', {id:item.id})}>
       <Text style={width>350 ? styles.text : styles.textMin } >{item.title}</Text>
       <Image
         style={styles.image}

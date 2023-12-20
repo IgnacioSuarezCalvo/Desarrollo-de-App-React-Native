@@ -1,21 +1,20 @@
 import { StyleSheet, Text, View, Image, Pressable, useWindowDimensions } from 'react-native'
 import { useEffect, useState } from 'react'
-import  Header  from '../Components/Header'
 import allProduct from '../Data/products.json'
-import GoBack from '../Components/GoBack'
 import { colors } from '../Global/colors'
 
 
-const ItemDetail = ({productDetailId, setProductDetailId}) => {
+const ItemDetail = ({route}) => {
+  const {id} =  route.params  
   const [product,setProduct] = useState({});
-
-  useEffect(()=>{
-    const productFinded = allProduct.find(product => product.id === productDetailId)
-    setProduct(productFinded)
-  },[productDetailId])
-
   const{width,height}  = useWindowDimensions()
   const[lanscape,setLanscape] = useState(false)
+  const images = product.images ? product.images : []
+
+  useEffect(()=>{
+    const productFinded = allProduct.find(product => product.id === id)
+    setProduct(productFinded)
+  },[id])
 
   useEffect(()=>{
       if(width>height){
@@ -27,15 +26,10 @@ const ItemDetail = ({productDetailId, setProductDetailId}) => {
 
   return (
     <View style={styles.ItemDetailContainer}>
-      <Header title="Detail"/>
-      <Pressable style={styles.goBack} title='go back' onPress={()=>setProductDetailId(0)}> 
-        <Text>Volver</Text>
-    </Pressable>
-
     <View styles={lanscape ? styles.contentTLandscape : styles.Content }>
         <Image
         style={lanscape ? styles.contentImageLandscape : styles.image}
-        source={{uri:product.thumbnail}}
+        source={{uri:images[2]}}
         resizeMode='cover'
         />
       <View style={ lanscape ? styles.contentDescriptionLandscape : styles.Description}>

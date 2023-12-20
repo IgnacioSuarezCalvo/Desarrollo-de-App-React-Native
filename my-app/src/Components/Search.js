@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 
 
-const Search = ({keyword, setKeyword}) => {
+const Search = ({setKeyword}) => {
 
     const [input,setInput] = useState("")
     const [error,setError] = useState("")
@@ -25,8 +25,6 @@ const Search = ({keyword, setKeyword}) => {
 
       }
 
-
-      
   return (
 
   
@@ -34,10 +32,6 @@ const Search = ({keyword, setKeyword}) => {
 
 
       <View style={styles.containerInput}>
-        <Pressable>
-          <AntDesign name="arrowleft" size={24} color="black"  />
-      
-        </Pressable>
           <TextInput placeholder='Buscar producto'value={input} style={styles.textInputContainer} onChangeText={(t)=>setInput(t)}/>
           <Pressable onPress={search}>
             <AntDesign name='search1' color='black' size={30}/>

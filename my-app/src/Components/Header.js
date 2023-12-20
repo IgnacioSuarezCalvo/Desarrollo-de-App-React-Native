@@ -6,6 +6,8 @@ const Header = ({title = 'Productos'}) => {
 
     const{width,height}  = useWindowDimensions()
     const[lanscape,setLanscape] = useState(false)
+
+    
     useEffect(()=>{
         if(width>height){
             setLanscape(true)
@@ -13,12 +15,11 @@ const Header = ({title = 'Productos'}) => {
             setLanscape(false)
         }
     },[width,height])
+
+
     return (
-
         <View style ={lanscape ? styles.containerLandscape : styles.container}>
-
             <Text style ={styles.text}>{title}</Text>
-
         </View>
     )
 }

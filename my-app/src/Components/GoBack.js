@@ -4,7 +4,7 @@ import { colors } from '../Global/colors'
 
 const GoBack = ({setCategorySelected}) => {
   return (
-    <Pressable style={styles.goBack} title='go back' onPress={()=>setCategorySelected('')}> 
+    <Pressable style={styles.goBack} title='Go back' onPress={()=>setCategorySelected('')}> 
         <Text>Volver</Text>
     </Pressable>
   )

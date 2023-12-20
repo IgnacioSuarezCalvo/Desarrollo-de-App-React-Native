@@ -1,17 +1,13 @@
-import { Button, FlatList, Pressable, StyleSheet, Text } from 'react-native'
-import  Header  from '../Components/Header'
+import {  FlatList,StyleSheet, } from 'react-native'
 import Search from '../Components/Search'
 import allProducts from '../Data/products.json'
 import ProductItem from '../Components/ProductItem'
 import { useEffect, useState } from 'react'
 import { colors } from '../Global/colors'
-import GoBack from '../Components/GoBack'
 
 
-
-
-const ItemListCategories = ({category , setCategorySelected, setProductDetailId}) => {
-
+const ItemListCategories = ({navigation , route }) => {
+  const {category} = route.params
   const [keyword,setKeyword] = useState("")
   const [products,setProducts] = useState(allProducts)
 
@@ -26,24 +22,16 @@ const ItemListCategories = ({category , setCategorySelected, setProductDetailId}
       setProducts(productsFiltered)
     }
 
-
-
-    
-
   },[keyword])
 
   return (
     <>
-      <Header/>
       <Search setKeyword={setKeyword}/>
-      <Pressable style={styles.goBack} title='go back' onPress={()=>setCategorySelected('')}> 
-        <Text>Volver</Text>
-      </Pressable>
       <FlatList
         style={styles.container}
         data={products}
         keyExtractor={item => item.id}
-        renderItem={({item})=> <ProductItem item={item} setProductDetailId={setProductDetailId} />}
+        renderItem={({item})=> <ProductItem item={item} navigation={navigation} route={route} />}
       />
     </>
   )
