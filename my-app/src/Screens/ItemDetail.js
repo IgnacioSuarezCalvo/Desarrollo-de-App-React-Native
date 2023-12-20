@@ -31,21 +31,25 @@ const ItemDetail = ({productDetailId, setProductDetailId}) => {
       <Pressable style={styles.goBack} title='go back' onPress={()=>setProductDetailId(0)}> 
         <Text>Volver</Text>
     </Pressable>
-    <View styles={lanscape ? styles.ContentLandscape : styles.Content }>
+
+    <View styles={lanscape ? styles.contentTLandscape : styles.Content }>
         <Image
-        style={lanscape ? styles.ContentImageLandscape : styles.image}
+        style={lanscape ? styles.contentImageLandscape : styles.image}
         source={{uri:product.thumbnail}}
         resizeMode='cover'
         />
-        <View style={ lanscape ? styles.ContentTextLandscape :  styles.containerText}>
-          <Text style={styles.title}>{product.title}</Text>
-          <Text style={styles.description}>{product.description}</Text>
-        </View>
-        <View style={lanscape ? styles.ContentPriceLandscape : styles.containerPrice}>
-          <Text style={styles.price}>$ {product.price}</Text>
-          <Pressable style={styles.buyNow}>
-            <Text style={styles.buyNowText}>Buy Now</Text>
-          </Pressable>
+      <View style={ lanscape ? styles.contentDescriptionLandscape : styles.Description}>
+          <View style={ lanscape ? styles.contentTextLandscape : styles.containerText}>
+            <Text style={styles.title}>{product.title}</Text>
+            <Text style={styles.description}>{product.description}</Text>
+          </View>
+
+          <View style={ lanscape ? styles.contentPriceLandscape : styles.containerPrice}>
+            <Text style={styles.price}>$ {product.price}</Text>
+            <Pressable style={styles.buyNow}>
+              <Text style={styles.buyNowText}>Buy Now</Text>
+            </Pressable>
+          </View>
         </View>
       </View>
       
@@ -59,28 +63,15 @@ const styles = StyleSheet.create({
     ListCategoriesContainer:{
         width:"100%",
         flex:1,
-        justifyContent:"start",
-        alignItems:"center"
+        alignItems:"center",
     },
     Content:{
       width:"100%",
-      flex:1,
-      justifyContent:"start",
-      alignItems:"center"
-    },
-    ContentLandscape:{
-      flexDirection:'row',
-      alignItems:'center',
-      gap:10,
-      marginVertical:15,
+      alignItems:"center",
     },
     image:{
       width:'100%',
-      height:300,
-    },
-    ContentImageLandscape:{
-      width:'30%',
-      height:300,
+      height:200,
     },
     goBack:{
       width:'100%',
@@ -92,11 +83,6 @@ const styles = StyleSheet.create({
       gap:15,
       paddingHorizontal:5,
       paddingVertical:15,
-
-    },
-    ContentTextLandscape:{
-      width:'30%',
-      flexDirection:'column'
     },
     containerPrice:{
       width:'100%',
@@ -104,11 +90,6 @@ const styles = StyleSheet.create({
       justifyContent:'space-around',
       alignItems:'center',
       marginVertical:10,
-
-    },
-    ContentPriceLandscape:{
-      width:'30%',
-      flexDirection:'column'
     },
     title:{
       fontSize:20,
@@ -122,6 +103,28 @@ const styles = StyleSheet.create({
       paddingVertical:10,
       paddingHorizontal:10,
       borderRadius:5
-    }
-    
+    },
+    contentTLandscape:{
+      width:'100%',
+      flexDirection:'row',
+      alignItems:'center',
+    },
+    contentDescriptionLandscape:{
+      flexDirection:'row',
+      paddingHorizontal:5,
+      paddingVertical:5,
+      gap:5,
+    },
+    contentImageLandscape:{
+      width:"20%",
+      height:150,
+    },
+    contentTextLandscape:{
+      width:'30%',
+      flexDirection:'column',
+    },
+    contentPriceLandscape:{
+      width:'30%',
+      flexDirection:'column',
+    },
 })

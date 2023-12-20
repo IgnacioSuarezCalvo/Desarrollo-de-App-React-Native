@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image, useWindowDimensions, Pressable } from 'react-native'
+import { StyleSheet, Text,Image, useWindowDimensions, Pressable } from 'react-native'
 import { colors } from '../Global/colors'
-import { useEffect } from 'react'
+
 
 
 const ProductItem = ({item,setProductDetailId}) => {
@@ -9,14 +9,14 @@ const ProductItem = ({item,setProductDetailId}) => {
 
   return (
     <Pressable style={styles.container} onPress={()=>setProductDetailId(item.id)}>
-      <Text style={width>350 ? styles.text : styles.textMin } >{item.title} </Text>
+      <Text style={width>350 ? styles.text : styles.textMin } >{item.title}</Text>
       <Image
         style={styles.image}
         resizeMode='cover'
         source={{uri:item.thumbnail}}
       
       />
-      <Text style={styles.text}>{item.title}</Text>
+      <Text style={styles.text}></Text>
     </Pressable>
   )
 }

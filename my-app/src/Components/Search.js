@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, TextInput, View, Text } from 'react-native'
 import { colors } from '../Global/colors'
 import { AntDesign, Entypo } from '@expo/vector-icons'
 import { useState } from 'react'
-import ItemListCategories from '../Screens/ItemListCategories'
+
 
 
 const Search = ({keyword, setKeyword}) => {

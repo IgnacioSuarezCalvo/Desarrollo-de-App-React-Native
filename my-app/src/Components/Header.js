@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor:colors.yellow1,
         width:'100%',
-        height:90,
+        height:80,
         justifyContent:'center',
         alignItems:'center'
     },
@@ -43,8 +43,6 @@ const styles = StyleSheet.create({
     text:{
         fontSize:20,
         fontFamily:'Lato',
-        marginTop:25,
-        
     }
 
 })
