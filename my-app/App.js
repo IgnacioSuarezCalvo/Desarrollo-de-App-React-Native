@@ -3,7 +3,7 @@ import { useFonts } from 'expo-font';
 import { colors} from './src/Global/colors';
 import { fonts } from './src/Global/fonts';
 
-import Navigation from './src/Navigation/Navigation';
+import TabNavigation from './src/Navigation/TabNavigation';
 
 export default function App() {
 
@@ -17,7 +17,7 @@ export default function App() {
       backgroundColor={colors.yellow1}
       barStyle='default'
       />
-     <Navigation/>
+     <TabNavigation/>
     </>
   );
 }

@@ -26,7 +26,7 @@ const ItemDetail = ({route}) => {
 
   return (
     <View style={styles.ItemDetailContainer}>
-    <View styles={lanscape ? styles.contentTLandscape : styles.Content }>
+    <View style={lanscape ? styles.contentTLandscape : styles.Content }>
         <Image
         style={lanscape ? styles.contentImageLandscape : styles.image}
         source={{uri:images[2]}}
@@ -67,13 +67,11 @@ const styles = StyleSheet.create({
       width:'100%',
       height:200,
     },
-    goBack:{
+    Description:{
       width:'100%',
-      backgroundColor:colors.yellow1,
-      padding:10,
-      paddingStart:40,
     },
     containerText:{
+      width:'100%',
       gap:15,
       paddingHorizontal:5,
       paddingVertical:15,
@@ -86,6 +84,8 @@ const styles = StyleSheet.create({
       marginVertical:10,
     },
     title:{
+      alignItems:'center',
+      justifyContent:'space-around',
       fontSize:20,
       fontWeight:'bold',
     },
@@ -102,23 +102,30 @@ const styles = StyleSheet.create({
       width:'100%',
       flexDirection:'row',
       alignItems:'center',
+      
     },
     contentDescriptionLandscape:{
-      flexDirection:'row',
+      flexDirection:'column',
       paddingHorizontal:5,
       paddingVertical:5,
-      gap:5,
+      gap:30,
+      alignItems:'center',
+      
     },
     contentImageLandscape:{
-      width:"20%",
-      height:150,
+      marginTop:20,
+      width:"40%",
+      height:250,
     },
     contentTextLandscape:{
-      width:'30%',
+      width:'100%',
       flexDirection:'column',
+      
     },
     contentPriceLandscape:{
       width:'30%',
-      flexDirection:'column',
+      flexDirection:'row',
+      
+      
     },
 })

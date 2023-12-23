@@ -1,17 +1,14 @@
 import { StyleSheet } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import Header from '../Components/Header'
 import Home from '../Screens/Home';
 import ItemListCategories from '../Screens/ItemListCategories';
 import ItemDetail from '../Screens/ItemDetail';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-const Navigation = () => {
+const ShopStack = () => {
   return (
-    <NavigationContainer>
     <Stack.Navigator
           initialRouterName='Home'
           screenOptions={
@@ -32,11 +29,9 @@ const Navigation = () => {
         <Stack.Screen name="Category" component={ItemListCategories} />
         <Stack.Screen name="Product" component={ItemDetail} />
     </Stack.Navigator>
-      </NavigationContainer> 
-
   )
 }
 
-export default Navigation
+export default ShopStack
 
 const styles = StyleSheet.create({})
