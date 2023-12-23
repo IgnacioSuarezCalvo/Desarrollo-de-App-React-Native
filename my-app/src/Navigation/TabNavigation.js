@@ -5,6 +5,8 @@ import ShopStack from './ShopStack';
 import CartStack from './CartStack';
 import { colors } from '../Global/colors';
 import { Entypo } from '@expo/vector-icons'
+import OrderStack from './OrderStack';
+import TabIcon from '../Components/TabIcon';
 
 
 const Tab = createBottomTabNavigator();
@@ -24,7 +26,7 @@ const TabNavigation = () => {
           name="ShopStack" 
           component={ShopStack} 
           options={{
-            tabBarIcon:() => <Entypo name='shop' size={40} color="white" />
+            tabBarIcon:({focused}) => <TabIcon icon="shop" label="Productos" focused={focused}/>
           }}
         />
 
@@ -32,8 +34,17 @@ const TabNavigation = () => {
           name="CartStack" 
           component={CartStack} 
           options={{
-            tabBarIcon:() => <Entypo name='shopping-cart' size={40} color="white" />
+            tabBarIcon:({focused}) => <TabIcon icon="shopping-cart" label="Carrito" focused={focused}/>
           }}
+
+        />
+        <Tab.Screen 
+          name="OrderStack" 
+          component={OrderStack} 
+          options={{
+            tabBarIcon:({focused}) => <TabIcon icon="list" label="Ordenes" focused={focused}/>
+          }}
+          
         />
       </Tab.Navigator>
     </NavigationContainer> 
