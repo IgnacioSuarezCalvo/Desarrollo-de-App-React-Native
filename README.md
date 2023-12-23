@@ -14,7 +14,8 @@ Aplicaciones en uso
   react-native-uuid 
   react native vector icons
   Fonts
-  React Navitagion
+  React Navigation
+  Tabs Navigation
 
   Aplicaciones y sus usos
   
@@ -40,6 +41,11 @@ Aplicaciones en uso
     Create import: import { NavigationContainer } from '@react-navigation/native'; import { createNativeStackNavigator } from '@react-navigation/native-stack';
     Agregar: const Stack = createNativeStackNavigator();
     Llamados: <!-- <NavigationContainer>{/* Rest of your app code */}</NavigationContainer>  <Stack.Screen name="Details" component={DetailsScreen} / --> 
+
+  Tabs Navigation
+    Instalacion: npm install @react-navigation/bottom-tabs
+    Create import: import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+    Agregar: const Tab = createBottomTabNavigator();
 
 Como levantar el proyecto (terminal de vsc)
   npx create-expo-app my-app (para levantar un proyecto en consola)
