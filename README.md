@@ -16,6 +16,7 @@ Aplicaciones en uso
   Fonts
   React Navigation
   Tabs Navigation
+  Redux Toolkit
 
   Aplicaciones y sus usos
   
@@ -46,6 +47,9 @@ Aplicaciones en uso
     Instalacion: npm install @react-navigation/bottom-tabs
     Create import: import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
     Agregar: const Tab = createBottomTabNavigator();
+
+    Redux Toolkit
+    npm install @reduxjs/toolkit react-redux
 
 Como levantar el proyecto (terminal de vsc)
   npx create-expo-app my-app (para levantar un proyecto en consola)
