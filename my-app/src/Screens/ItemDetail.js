@@ -1,20 +1,14 @@
 import { StyleSheet, Text, View, Image, Pressable, useWindowDimensions } from 'react-native'
 import { useEffect, useState } from 'react'
-import allProduct from '../Data/products.json'
 import { colors } from '../Global/colors'
-
+import { useSelector} from 'react-redux'
 
 const ItemDetail = ({route}) => {
-  const {id} =  route.params  
-  const [product,setProduct] = useState({});
+  
   const{width,height}  = useWindowDimensions()
   const[lanscape,setLanscape] = useState(false)
   const images = product.images ? product.images : []
-
-  useEffect(()=>{
-    const productFinded = allProduct.find(product => product.id === id)
-    setProduct(productFinded)
-  },[id])
+  const product = useSelector((state)=>state.shop.value.productSelected)
 
   useEffect(()=>{
       if(width>height){
