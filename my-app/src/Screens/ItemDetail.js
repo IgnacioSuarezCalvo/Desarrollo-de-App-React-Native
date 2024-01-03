@@ -1,14 +1,18 @@
 import { StyleSheet, Text, View, Image, Pressable, useWindowDimensions } from 'react-native'
 import { useEffect, useState } from 'react'
 import { colors } from '../Global/colors'
-import { useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
+
 
 const ItemDetail = ({route}) => {
   
   const{width,height}  = useWindowDimensions()
   const[lanscape,setLanscape] = useState(false)
+
+  const product = useSelector((state)=> state.shop.value.productSelected)
+  
   const images = product.images ? product.images : []
-  const product = useSelector((state)=>state.shop.value.productSelected)
+  
 
   useEffect(()=>{
       if(width>height){
@@ -29,7 +33,7 @@ const ItemDetail = ({route}) => {
       <View style={ lanscape ? styles.contentDescriptionLandscape : styles.Description}>
           <View style={ lanscape ? styles.contentTextLandscape : styles.containerText}>
             <Text style={styles.title}>{product.title}</Text>
-            <Text style={styles.description}>{product.description}</Text>
+            <Text>{product.description}</Text>
           </View>
 
           <View style={ lanscape ? styles.contentPriceLandscape : styles.containerPrice}>

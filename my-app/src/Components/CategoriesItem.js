@@ -7,7 +7,7 @@ const CategoriesItem = ({category,navigation,route}) => {
   const dispatch = useDispatch()
   return (
     <Pressable style={styles.CategoriesItemContainer} onPress={()=> {
-      dispatch(setProductsFilteredByCategory,{category})
+      dispatch(setProductsFilteredByCategory(category))
       navigation.navigate('Category',{category})
       }} >
       <Text style={styles.CategoriesItemText}>{category}</Text>

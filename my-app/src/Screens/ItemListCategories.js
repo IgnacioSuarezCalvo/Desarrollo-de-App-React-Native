@@ -7,13 +7,11 @@ import {useSelector} from 'react-redux'
 
 
 const ItemListCategories = ({navigation , route }) => {
-  const productsFilteredByCategory = useSelector(state => state.shop.value.productsFilteredByCategory)
+  const productsFilteredByCategory = useSelector((state) => state.shop.value.productsFilteredByCategory)
   const [keyword,setKeyword] = useState("")
   const [products,setProducts] = useState(productsFilteredByCategory)
 
   useEffect(()=>{
-
-
       const productsFiltered = productsFilteredByCategory.filter(product => product.title.includes(keyword))
       setProducts(productsFiltered)
   },[keyword,productsFilteredByCategory])

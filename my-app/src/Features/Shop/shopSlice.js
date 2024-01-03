@@ -4,7 +4,7 @@ import allCategories from "../../Data/categories.json"
 
 const initialState = {
     value:{
-        pruducts: allProducts,
+        products: allProducts,
         categories:allCategories,
         productSelected:{},
         productsFilteredByCategory:[]
@@ -15,11 +15,14 @@ export const shopSlice = createSlice({
     name:"shop",
     initialState,
     reducers:{
-        setProductsFilteredByCategory: (state,actions)=>{
-            state.value.productsFilteredByCategory = state.value.productsFilteredByCategory.filter(product => product.category ==actions.payload)
+        setProductsFilteredByCategory: (state, actions) => {
+            state.value.productsFilteredByCategory =
+                state.value.products.filter(
+                    (product) => product.category == actions.payload
+                );
         },
         setProductSelected:(state,actions) =>{
-            state.value.productSelected =  state.value.product.find(product =>product.id ===actions.payload)
+            state.value.productSelected =  state.value.products.find(product =>product.id ===actions.payload)
         }
     }
  })
