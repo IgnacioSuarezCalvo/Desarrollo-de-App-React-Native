@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         alignSelf:"stretch",
         justifyContent:"space-around",
-        marginTop:20,
+        marginTop:15,
         
       },
       input:{

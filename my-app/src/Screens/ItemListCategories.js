@@ -29,6 +29,8 @@ const ItemListCategories = ({navigation , route }) => {
   )
 }
 
+
+
 export default ItemListCategories
 
 const styles = StyleSheet.create({
