@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View, Image, Pressable, useWindowDimensions } from 'react-native'
 import { useEffect, useState } from 'react'
 import { colors } from '../Global/colors'
-import { useSelector } from 'react-redux'
+import { useSelector ,useDispatch } from 'react-redux'
+import { addItem } from '../Features/cart/cartSlice'
 
 
 const ItemDetail = ({route}) => {
-  
+  const dispatch = useDispatch()
   const{width,height}  = useWindowDimensions()
   const[lanscape,setLanscape] = useState(false)
 
@@ -38,8 +39,8 @@ const ItemDetail = ({route}) => {
 
           <View style={ lanscape ? styles.contentPriceLandscape : styles.containerPrice}>
             <Text style={styles.price}>$ {product.price}</Text>
-            <Pressable style={styles.buyNow}>
-              <Text style={styles.buyNowText}>Buy Now</Text>
+            <Pressable style={styles.buyNow} onPress={()=> dispatch(addItem(product))}>
+              <Text style={styles.buyNowText}>Add Cart</Text>
             </Pressable>
           </View>
         </View>
