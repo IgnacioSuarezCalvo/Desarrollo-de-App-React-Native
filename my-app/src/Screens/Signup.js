@@ -1,18 +1,51 @@
-import {useState } from 'react'
+import {useEffect, useState } from 'react'
 import { View, Text ,StyleSheet, Pressable} from 'react-native'
 import InputForm from '../Components/InputForm'
 import SubmitButton from '../Components/SubmitButton'
 import { colors } from '../Global/colors'
+import { useSignupMutation } from '../App/services/auth'
+import { useDispatch } from 'react-redux'
+import { signupSchema } from '../validations/signupSchema'
 
 
 
 const Signup = ({navigation}) => {
+  const dispatch = useDispatch()
+    const [triggerSignup,{data,isError,isSuccess,error,isLoading}] = useSignupMutation()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [emailError, setEmailError] = useState("")
+    const [passwordError, setPasswordError] = useState("")
+    const [confirmPasswordError, setConfirmPasswordError] = useState("")
+
+    useEffect(()=>{
+      if(isSuccess) dispatch(setUser(data))
+      if(isError) console.log(error)
+    },[data,isError,isSuccess])
 
     const onSubmit = () =>{
-
+      try {
+        setEmailError("")
+        setPasswordError("")
+        setConfirmPasswordError("")
+        signupSchema.validateSync({email,password,confirmPassword})
+        triggerSignup({email,password})
+      } catch (error) {
+          switch(error.path){
+            case"email":
+              setEmailError(error.message)
+              break
+            case"password":
+              setPasswordError(error.message)
+              break
+            case"confirmPassword":
+              setConfirmPassword(error.message)
+              break
+            default:
+              break
+        }
+      }
     }
 
   return (
@@ -24,21 +57,21 @@ const Signup = ({navigation}) => {
             value={email}
             onChangeText={(t) => setEmail(t)}
             isSecure={false}
-            error=""
+            error={emailError}
           />
           <InputForm
             label="Password"
             value={password}
             onChangeText={(t) => setPassword(t)}
             isSecure={true}
-            error=""
+            error={passwordError}
           />
            <InputForm
             label="Confirm password"
             value={confirmPassword}
             onChangeText={(t) => setConfirmPassword(t)}
             isSecure={true}
-            error=""
+            error={confirmPassword}
 
           />
           <SubmitButton title="Send" onPress={onSubmit}  

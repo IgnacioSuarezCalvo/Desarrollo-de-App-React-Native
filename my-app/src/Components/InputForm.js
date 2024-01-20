@@ -9,6 +9,7 @@ const InputForm = ({label,value, onChangeText,isSecure,error}) => {
     <View style={styles.inputContainer}>
         <Text style={styles.titleInput}>{label}</Text>
         <TextInput  value={value}  onChangeText={onChangeText} style={styles.input} secureTextEntry={isSecure} />
+        {error ? <View><Text style={styles.error}>{error}</Text></View> : null}
 
     </View>
   )

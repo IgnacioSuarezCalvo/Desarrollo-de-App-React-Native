@@ -3,27 +3,29 @@ import { View, Text ,StyleSheet, Pressable} from 'react-native'
 import { colors } from '../Global/colors'
 import InputForm from '../Components/InputForm'
 import SubmitButton from '../Components/SubmitButton'
-
+import { useLoginMutation } from '../App/services/auth'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../Features/auth/authSlice'
 
 
 
 
 const Login = ({navigation}) => {
-//   const dispatch = useDispatch()
-//   const [triggerLogin,{data,isError,isSuccess,error,isLoading}] = useLoginMutation()
+   const dispatch = useDispatch()
+   const [triggerLogin,{data,isError,isSuccess,error,isLoading}] = useLoginMutation()
 
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
 
-//   useEffect(()=>{
-//     if(isSuccess) dispatch(setUser(data))
-//     if(isError) console.log(error)
-//   },[data,isError,isSuccess])
+   useEffect(()=>{
+     if(isSuccess) dispatch(setUser(data))
+     if(isError) console.log(error)
+   },[data,isError,isSuccess])
 
 
-//   const onSubmit = () => {
-//     triggerLogin({email,password})
-//   }
+  const onSubmit = () => {
+     triggerLogin({email,password})
+  }
 
   return (
     <View style={styles.main}>
@@ -43,7 +45,7 @@ const Login = ({navigation}) => {
             isSecure={true}
             error=""
           />
-          <SubmitButton /*onPress={onSubmit} title="Send"*/ />
+          <SubmitButton onPress={onSubmit} title="Send" />
           <Text style={styles.sub}>Not have an account?</Text>
           <Pressable onPress={()=> navigation.navigate("Signup")} >
               <Text style={styles.subLink}>Sign up</Text>

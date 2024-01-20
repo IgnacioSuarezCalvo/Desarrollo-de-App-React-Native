@@ -6,6 +6,7 @@ import { colors } from '../Global/colors';
 import { Entypo } from '@expo/vector-icons'
 import OrderStack from './OrderStack';
 import TabIcon from '../Components/TabIcon';
+import ProfileStack from './ProfileStack';
 
 
 const Tab = createBottomTabNavigator();
@@ -42,6 +43,14 @@ const TabNavigation = () => {
           component={OrderStack} 
           options={{
             tabBarIcon:({focused}) => <TabIcon icon="list" label="Ordenes" focused={focused}/>
+          }}
+          
+        />
+        <Tab.Screen 
+          name="ProfileStack" 
+          component={ProfileStack} 
+          options={{
+            tabBarIcon:({focused}) => <TabIcon icon="user" label="Perfil" focused={focused}/>
           }}
           
         />
