@@ -17,6 +17,8 @@ Aplicaciones en uso
   React Navigation
   Tabs Navigation
   Redux Toolkit
+  Yup
+  Expo image picker
 
   Aplicaciones y sus usos
   
@@ -50,6 +52,13 @@ Aplicaciones en uso
 
     Redux Toolkit
     npm install @reduxjs/toolkit react-redux
+
+    Yup
+    npm i yup
+    es para validad los imput del form
+
+    Expo image picker
+    npx expo install expo-image-picker
 
 Como levantar el proyecto (terminal de vsc)
   npx create-expo-app my-app (para levantar un proyecto en consola)
