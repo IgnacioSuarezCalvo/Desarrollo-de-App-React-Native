@@ -14,11 +14,18 @@ export const shopApi = createApi({
         query:(id)=> `products/${id}.json`
     }),
     getCategories: builder.query({
-        query:(id)=> `categories.json`
-    })
+        query:()=> `categories.json`
+    }),
+    portOrders: builder.mutation({
+        query:(order)=> ({
+            url:"orders.json",
+            method:"POST",
+            body:order
+        })
+    }),
      
   }),
 })
 
-export const { useGetProductsQuery,useGetProductQuery,useGetCategoriesQuery } = shopApi
+export const { useGetProductsQuery,useGetProductQuery,useGetCategoriesQuery,usePortOrdersMutation } = shopApi
 

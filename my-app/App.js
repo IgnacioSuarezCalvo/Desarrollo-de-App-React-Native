@@ -4,7 +4,8 @@ import { colors} from './src/Global/colors';
 import { fonts } from './src/Global/fonts';
 import { store } from './src/App/store'
 import { Provider }  from 'react-redux'
-import TabNavigation from './src/Navigation/TabNavigation';
+import MainNavigator from './src/Navigation/MainNavigator';
+
 
 export default function App() {
 
@@ -16,7 +17,8 @@ export default function App() {
     <>
       <StatusBar backgroundColor={colors.yellow1} barStyle='default' />
       <Provider store={store}>
-        <TabNavigation/>
+        <MainNavigator/> 
+        
       </Provider>
     </>
   );

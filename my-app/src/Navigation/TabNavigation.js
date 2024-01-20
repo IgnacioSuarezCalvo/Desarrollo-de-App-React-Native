@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ShopStack from './ShopStack';
 import CartStack from './CartStack';
@@ -14,7 +13,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   return (
-    <NavigationContainer>
+
       <Tab.Navigator
         screenOptions={{
           headerShown:false,
@@ -47,7 +46,7 @@ const TabNavigation = () => {
           
         />
       </Tab.Navigator>
-    </NavigationContainer> 
+
 
   )
 }
