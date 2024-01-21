@@ -6,6 +6,7 @@ import { colors } from '../Global/colors'
 import { useSignupMutation } from '../App/services/auth'
 import { useDispatch } from 'react-redux'
 import { signupSchema } from '../validations/signupSchema'
+import { setUser } from '../Features/auth/authSlice'
 
 
 
@@ -71,7 +72,7 @@ const Signup = ({navigation}) => {
             value={confirmPassword}
             onChangeText={(t) => setConfirmPassword(t)}
             isSecure={true}
-            error={confirmPassword}
+            error={confirmPasswordError}
 
           />
           <SubmitButton title="Send" onPress={onSubmit}  
