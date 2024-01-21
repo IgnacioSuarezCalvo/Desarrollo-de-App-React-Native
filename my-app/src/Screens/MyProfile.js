@@ -1,15 +1,17 @@
 import { StyleSheet, View,Image } from 'react-native'
 import AddButton from '../Components/AddButton'
+import { useGetProfileImageQuery } from '../App/services/shopServices'
+import { useSelector } from 'react-redux'
 
 
 const MyProfile = ({navigation}) => {
-    // const localId = useSelector(state => state.auth.value.localId)
-    // const {data} = useGetProfileImageQuery(localId)
+        const localId = useSelector(state => state.auth.value.localId)
+        const {data} = useGetProfileImageQuery(localId)
 
   return (
     <View style={styles.container}>
         <Image
-            source={require("../../assets/user.png")}
+            source={data ? {uri:data.image} : require("../../assets/user.png")}
             style={styles.image}
             resizeMode='cover'
         />

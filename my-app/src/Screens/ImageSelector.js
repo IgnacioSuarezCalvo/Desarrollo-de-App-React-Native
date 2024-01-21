@@ -1,13 +1,40 @@
-import {useState } from 'react'
+import {useEffect, useState } from 'react'
 import { StyleSheet, Image, View} from 'react-native'
 import AddButton from '../Components/AddButton'
+import * as ImagePicker from 'expo-image-picker';
+import { useSelector } from 'react-redux'
+import { useGetProfileImageQuery, usePostProfileImageMutation } from '../App/services/shopServices';
 
 
 const ImageSelector = ({navigation}) => {
 
     const [image,setImage] = useState("")
-    const pickImage = () => {}
-    const confirmImage = () => {}
+    const [triggerProfileImage] = usePostProfileImageMutation()
+    const localId = useSelector(state => state.auth.value.localId)
+    const {data,isSuccess} = useGetProfileImageQuery(localId)
+
+    useEffect(()=>{
+        if(isSuccess) setImage(data?.image)
+    },[isSuccess])
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 0.4,
+            base64:true
+          });
+
+          if (!result.canceled) {
+            setImage('data:image/jpeg;base64,' + result.assets[0].base64);
+            navigation.goBack()
+          }
+        }
+    const confirmImage = () => {
+        triggerProfileImage({localId,image})
+        navigation.goBack()
+    }
 
 
   return (
