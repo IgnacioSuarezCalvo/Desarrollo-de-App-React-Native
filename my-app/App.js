@@ -5,6 +5,11 @@ import { fonts } from './src/Global/fonts';
 import { store } from './src/App/store'
 import { Provider }  from 'react-redux'
 import MainNavigator from './src/Navigation/MainNavigator';
+import { init } from './src/database';
+
+init()
+  .then(()=>console.log('DB Initialized'))
+  .catch(err=>console.log(err))
 
 
 export default function App() {
