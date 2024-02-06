@@ -22,8 +22,8 @@ const Login = ({navigation}) => {
      if(isSuccess) {
       dispatch(setUser(data))
       insertSession(data)
-      .then((result)=>console.log(result))
-      .catch((err)=>console.log(err))
+      .then(result =>console.log(result))
+      .catch(err =>console.log(err))
     }
      if(isError) console.log(error)
    },[data,isError,isSuccess])

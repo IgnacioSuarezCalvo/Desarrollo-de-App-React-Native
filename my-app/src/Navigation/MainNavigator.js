@@ -27,8 +27,7 @@ const MainNavigator = () => {
 
   return (
     <NavigationContainer>
-        {idToken ? <TabNavigation/> : <AuthStack/>} 
-        
+        {idToken ? <TabNavigation/> : <AuthStack/>}    
     </NavigationContainer>
   )
 }
