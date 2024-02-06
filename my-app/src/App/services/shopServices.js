@@ -18,11 +18,21 @@ export const shopApi = createApi({
         query:()=> `categories.json`
     }),
     portOrders: builder.mutation({
-        query:(order)=> ({
-            url:"orders.json",
+        query:({localId,order})=> ({
+            url:`orders/${localId}.json`,
             method:"POST",
             body:order
-        })
+        }),
+        invalidatesTags:["order"]
+    }),
+    getOrders:builder.query({
+      query:(localId) => `orders/${localId}.json`,
+      transformResponse:(response) =>{
+        if(!response) return []
+        const data = Object.keys(response).map(key => ({id:key,...response[key]}))
+        return data
+      },
+      providesTags:["order"]
     }),
     postProfileImage: builder.mutation({
       query:({localId,image})=> ({
@@ -41,5 +51,5 @@ export const shopApi = createApi({
   }),
 })
 
-export const { useGetProductsQuery,useGetProductQuery,useGetCategoriesQuery,usePortOrdersMutation,usePostProfileImageMutation,useGetProfileImageQuery } = shopApi
+export const { useGetProductsQuery,useGetProductQuery,useGetCategoriesQuery,usePortOrdersMutation,useGetOrdersQuery,usePostProfileImageMutation,useGetProfileImageQuery } = shopApi
 

@@ -7,6 +7,7 @@ import { usePortOrdersMutation } from '../App/services/shopServices'
 
 
 const Cart = () => {
+    const localId = useSelector(state =>state.auth.value.localId)
     const cart = useSelector(state => state.cart.value)
     const [triggerPostOrder] = usePortOrdersMutation()
 
@@ -18,7 +19,7 @@ const Cart = () => {
             renderItem={({item})=><CartItem item={item}/>}
         />
         <View style={styles.confirmContainer}>
-            <Pressable onPress={()=>triggerPostOrder(cart)}>
+            <Pressable onPress={()=>triggerPostOrder({localId,order:cart})}>
                 <Text style={styles.text}>Confirmar</Text>
             </Pressable>
             <Text style={styles.text}>$ {cart.total}</Text>
