@@ -9,6 +9,7 @@ import LoadingSpinner from '../Components/LoadingSpinner'
 const Order = () => {
   const localId = useSelector(state => state.auth.value.localId)
   const {data,isSuccess,isError,error,isLoading} = useGetOrdersQuery(localId)
+  
   const [info,setInfo] = useState(true)
   const [errorMenssage,setErrorMessage] = useState("")
   const [loading,setLoading] = useState(true)
@@ -22,6 +23,8 @@ const Order = () => {
   if(!info) return <View><Text>No hay ordenes</Text></View>
   if(errorMenssage) return <View><Text>Error al cargar</Text></View>
   if(loading) return <LoadingSpinner/>
+
+
   return (
     <FlatList
     data={data}

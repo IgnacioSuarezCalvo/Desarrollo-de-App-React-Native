@@ -6,7 +6,7 @@ import { base_url } from '../../firebase/db'
 export const shopApi = createApi({
   reducerPath: 'shopApi',
   baseQuery: fetchBaseQuery({ baseUrl: base_url  }),
-  tagTypes:["image"],
+  tagTypes:["image","order"],
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: (category) => `products.json?orderBy="category"&equalTo="${category}"`,

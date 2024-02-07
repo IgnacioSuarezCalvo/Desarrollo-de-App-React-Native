@@ -1,8 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { Entypo } from '@expo/vector-icons'
 import { colors } from '../Global/colors'
+import { removeItem } from '../Features/cart/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const CartItem = ({item}) => {
+    const dispatch = useDispatch()
+
+    const products = useSelector((state)=> state.shop.value.productSelected)
+
   return (
     <View style={styles.container}>
         <View style={styles.textContainer}>
@@ -10,7 +16,7 @@ const CartItem = ({item}) => {
             <Text style={styles.text2}>{item.brand}</Text>
             <Text style={styles.text2}>Cantidad: {item.quantity} Precio $ {item.price}</Text>
         </View>
-        <Entypo name='trash' size={25} color="black"/>
+        <Entypo onPress={()=> dispatch(removeItem(products))} name='trash' size={25} color="black"/>
     </View>
   )
 }
