@@ -1,3 +1,6 @@
+// El contador lo dejo comentado por tema de ejercicios, pero no esta en uso
+
+
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import  { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'

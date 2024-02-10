@@ -40,7 +40,7 @@ const ItemDetail = ({navigation}) => {
           <View style={ lanscape ? styles.contentPriceLandscape : styles.containerPrice}>
             <Text style={styles.price}>$ {product.price}</Text>
             <Pressable style={styles.buyNow} onPress={()=> dispatch(addItem(product))}>
-              <Text style={styles.buyNowText} onPress={()=> navigation.navigate("Cart")} >Add Cart</Text>
+              <Text style={styles.buyNowText} >Add Cart</Text>
             </Pressable>
           </View>
         </View>
