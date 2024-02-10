@@ -8,6 +8,10 @@
 
 ### *Descripcion del proyecto*:
 
+* El objetivo y la descripción general del proyecto, incluye el público objetivo, el tipo de productos o servicios que se ofrece y las principales funcionalidades de la aplicación.
+* El diseño y la arquitectura de la aplicación es simple y explica cómo se ha estructurado el código, qué componentes se han utilizado y cómo se ha implementado el login y signup con react native.
+* La conclusión y las recomendaciones finales, se resume a los principales logros y aprendizajes del proyecto, evaluando el grado de satisfacción con el resultado y proponiendo acciones futuras para optimizar o escalar la aplicación.
+
 
 Funcionalidades:
 
